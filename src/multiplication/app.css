@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'Marker Felt';
+  src: url('MarkerFelt.ttf') format('truetype');
+}
+
+.button {
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 14;
+}
+
+.label {
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 15;
+}
+
+.title {
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 36;
+}
+
+#question {
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 170;
+}
+
+.pane {
+    -fx-background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f6/Whiteboard_with_markers.jpg");
+    -fx-background-size: stretch;
+}
+
+#answer {
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 36;
+}
+
+#resultsTitle {
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 48;
+}
+
+.endLabel {
+     -fx-font-family: 'Marker Felt';
+     -fx-font-size: 17;
+}
+
+.table-row-cell{
+    -fx-font-family: 'Marker Felt';
+    -fx-font-size: 15;
+    -fx-background-color: transparent;
+}
+.table-view{
+   -fx-background-color: transparent;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+.table-row-cell:filled:selected {
+  -fx-background: -fx-control-inner-background ;
+  -fx-background-color: -fx-table-cell-border-color, -fx-background ;
+  -fx-background-insets: 0, 0 0 1 0 ;
+  -fx-table-cell-border-color: derive(-fx-color, 5%);
+}
+.table-row-cell:odd:filled:selected {
+  -fx-background: -fx-control-inner-background-alt ;
+}
