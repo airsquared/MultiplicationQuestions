@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -21,12 +21,14 @@ public class ResultsController {
 
     @FXML private TableView<SavedData> table;
 
-    @FXML private TableColumn date;
-    @FXML private TableColumn total;
-    @FXML private TableColumn wrong;
-    @FXML private TableColumn right;
-    @FXML private TableColumn duration;
+    @FXML private TableColumn<SavedData, SavedData> date;
+    @FXML private TableColumn<SavedData, SavedData> total;
+    @FXML private TableColumn<SavedData, SavedData> wrong;
+    @FXML private TableColumn<SavedData, SavedData> right;
+    @FXML private TableColumn<SavedData, SavedData> duration;
     private static Stage primaryStage;
+
+    private final String csvFile = "MultiplicationResults.csv";
 
 
     public static void showScene(Stage primaryStage) {
@@ -46,8 +48,16 @@ public class ResultsController {
 
     @FXML
     public void initialize() {
-        showTable();
+        if (new File(csvFile).exists()) {
+            showTable();
+        } else {
+            mainMenu();
+        }
     }
+
+    // TODO: properly format table
+    // TODO: add whiteboard background to this part also
+    // TODO: remove quotations around items in table
 
     private final ObservableList<SavedData> dataList = FXCollections.observableArrayList();
 
@@ -59,9 +69,7 @@ public class ResultsController {
         duration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         table.setItems(dataList);
 
-        final String csvFile = "MultiplicationResults.csv";
         final String fieldDelimiter = ",";
-
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
@@ -76,8 +84,6 @@ public class ResultsController {
                     whileCounter = 1;
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,10 +94,11 @@ public class ResultsController {
         ChooserController.showScene(primaryStage);
     }
 
+    @SuppressWarnings("unused") // getters are required for the table to work
     public class SavedData {
         private SimpleStringProperty date, total, wrong, right, duration;
 
-        public SavedData(String date, String total, String wrong, String right, String duration) {
+        SavedData(String date, String total, String wrong, String right, String duration) {
             this.date = new SimpleStringProperty(date);
             this.total = new SimpleStringProperty(total);
             this.wrong = new SimpleStringProperty(wrong);
