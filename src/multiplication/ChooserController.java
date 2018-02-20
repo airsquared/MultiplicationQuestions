@@ -62,8 +62,6 @@ public class ChooserController {
         QuestionController.showScene((Stage) numQuestions.getScene().getWindow(), tablesOf, Integer.valueOf(numQuestions.getText()));
     }
 
-    @FXML private Button prevResults;
-
     public void prevResults() {
         ResultsController.showScene(((Stage) numQuestions.getScene().getWindow()));
     }
