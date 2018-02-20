@@ -65,11 +65,7 @@ public class ChooserController {
     @FXML private Button prevResults;
 
     public void prevResults() {
-        if (numQuestions.getText().equals("0")) {
-            ResultsController.showScene(((Stage) numQuestions.getScene().getWindow()));
-        } else {
-            prevResults.setText("Work in Progress");
-        }
+        ResultsController.showScene(((Stage) numQuestions.getScene().getWindow()));
     }
 
     public void tableClickedHandler(ActionEvent evt) {
