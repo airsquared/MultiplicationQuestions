@@ -69,14 +69,20 @@ public class ChooserController {
     public void tableClickedHandler(ActionEvent evt) {
         Button button = (Button) evt.getTarget();
         String buttonText = button.getText();
-        if (buttonText.equals("All(1-12)")) {
-            showQuestionScene(0);
-        } else if (buttonText.equals("1's Table") || buttonText.equals("Too bad")) {
-            button.setText("Too bad");
-        } else {
-            String index = buttonText.substring(0, (buttonText.indexOf(" Tables")));
-            int table = Integer.valueOf(index);
-            showQuestionScene(table);
+        switch (buttonText) {
+            case "All(1-12)":
+                showQuestionScene(0);
+                break;
+            case "1's Table":
+                button.setText("Too bad");
+                break;
+            case "Too bad":
+                break;
+            default:
+                String index = buttonText.substring(0, (buttonText.indexOf(" Tables")));
+                int table = Integer.valueOf(index);
+                showQuestionScene(table);
+                break;
         }
     }
 }
