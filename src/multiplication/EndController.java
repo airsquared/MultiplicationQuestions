@@ -101,12 +101,12 @@ public class EndController {
             try (CSVWriter writer = new CSVWriter(new FileWriter(csv, true))) {
                 writer.writeNext(newStats);
             }
-        } else if (fileExists && !headerExists) {
+        } else if (fileExists) {
             try (CSVWriter writer = new CSVWriter(new FileWriter(csv, true))) {
                 writer.writeNext(header);
                 writer.writeNext(newStats);
             }
-        } else if (!fileExists) {
+        } else {
             try (CSVWriter writer = new CSVWriter(new FileWriter(csv))) {
                 writer.writeNext(header);
                 writer.writeNext(newStats);

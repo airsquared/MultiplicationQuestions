@@ -46,7 +46,6 @@ public class QuestionController {
 
     @FXML
     public void initialize() {
-        System.out.println();
         stopwatch = Stopwatch.createStarted();
         counter = 0;
         showQuestion();
@@ -94,11 +93,11 @@ public class QuestionController {
     }
 
     private void showQuestion() {
-        counter = counter + 1;
+        counter++;
         qCompletedLabel.setText("Question " + counter + " of " + numQuestions + "                       Progress:");
         answer.setText(null);
         nextButton.setDisable(false);
-        if (counter < numQuestions + 1) {
+        if (counter <= numQuestions) {
             if (tablesOf > 0) {
                 factorX = ThreadLocalRandom.current().nextInt(tablesOf, tablesOf + 1);
             } else if (tablesOf == 0) {
@@ -117,7 +116,7 @@ public class QuestionController {
         }
         if (Integer.valueOf(answer.getText()) == factorX * factorY) {
             answer.setStyle("-fx-background-color:green;");
-            qCorrect = qCorrect + 1;
+            qCorrect++;
         } else {
             answer.setStyle("-fx-background-color:red;");
         }
